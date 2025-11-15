@@ -12,84 +12,62 @@
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
 </p>
 
-📌 Overview
-This project simulates a real-time FinTech transaction engine, optimized for high throughput, low latency, and intelligent fraud detection.
-It combines JVM memory management techniques, object pooling, off-heap memory, multithreading, and a weighted fraud scoring model to simulate how actual payment systems (UPI, Visa, Stripe, PayPal, Razorpay) process and screen transactions.
+---
 
-✨ Key Features
-🔥 1. High-Performance Transaction Processing
--Processes 200,000+ transactions per run
--Achieves ~680,000 TPS on consumer hardware
--Built with ExecutorService multithreading
+## 📌 Overview
+A high-performance **FinTech transaction processing engine** built in Java, designed to simulate real-world payment systems like UPI, Visa, Razorpay, and PayPal.
 
-🧠 2. Fraud Scoring Model (Weighted)
-Generates a fraud probability (0–1) using engineered risk features:
--Amount risk
--Device change
--Location change
--Frequency of transactions
--If score ≥ 0.8 → transaction marked fraudulent.
+The engine uses:
+- **Advanced JVM memory management**
+- **Object pooling**
+- **Off-heap memory**
+- **Multithreading**
+- **Weighted fraud scoring**
 
-⚡ 3. JVM Memory Management
-Includes:
--Custom Transaction Object Pool
--Reduced GC pressure
--Direct (off-heap) ByteBuffer usage
--Efficient heap utilization
--GC monitoring using JVM MXBeans
+It achieves extremely high throughput while keeping GC pauses minimal.
 
-🏎 4. Optimized Performance Architecture
--Parallel computation
--Zero GC spikes
--Low-latency risk assessment
--Memory-efficient data reuse
+---
 
-📊 5. Live GC & Memory Usage Monitoring
-Get real-time:
--Eden/Young GC count & pauses
--Heap usage
--Pool size
--Throughput metrics
+## ✨ Key Features
 
-🧩 System Architecture
-Main.java
-└── starts → MultiThreadedExecutor
-├── runs parallel threads
-└── submits tasks → TransactionProcessor
-├── fraud scoring
-├── memory writes
-└── updates counters
-│
-▼
-MemoryManager
-├── TransactionPool (object pooling)
-└── DirectBuffer (off-heap memory)
+### 🔥 High-Performance Processing
+- Handles **200k+ transactions per run**
+- Reaches **~680,000 transactions per second**
+- Parallel execution using multithreading
 
-📂 Project Structure
-src/main/java/com/fintech/memory/
-│── Main.java
-│── model/
-│   └── Transaction.java
-│── engine/
-│   ├── FraudDetector.java
-│   ├── FraudScorer.java
-│   ├── MemoryManager.java
-│   ├── TransactionPool.java
-│   ├── TransactionProcessor.java
-│   └── MultiThreadedExecutor.java
-└── util/
-    └── GCMonitor.java
+### 🧠 Intelligent Fraud Scoring Model
+- Computes a risk score (0 → 1) using:
+  - Amount  
+  - Device change  
+  - Location change  
+  - Frequency  
+- **Score ≥ 0.8 → Fraud**
 
-⚙️ How to Run
-1. Compile
-cd src/main/java
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { javac $_.FullName }
+### ⚡ Memory Optimized Architecture
+- Custom object pooling  
+- Off-heap direct memory buffers  
+- Minimal GC pressure  
+- Live GC monitoring  
 
-2. Run
-cd ../../..
-java -cp src/main/java com.fintech.memory.Main
+---
 
-📈 Sample Output
+## 🛡 Fraud Scoring Logic
+- score =
+0.4 * amountScore +
+0.3 * deviceChange +
+0.2 * locationChange +
+0.1 * frequencyScore;
+  
+---
+
+**Risk Categories:**  
+- ≥ 0.8 → HIGH RISK  
+- 0.5–0.8 → MEDIUM RISK  
+- < 0.5 → LOW RISK  
+
+---
+
+## 📈 Sample Performance Output
 ===== MULTITHREADED SUMMARY =====
 Threads: 8
 Total Transactions: 195836
@@ -98,20 +76,23 @@ Volume: 9.81B
 Total time: 289 ms
 Throughput: 677,633 TPS
 
-🛡 Fraud Scoring Logic
-score = 
-    0.4 * amountScore +
-    0.3 * deviceChange +
-    0.2 * locationChange +
-    0.1 * frequencyScore;
+---
 
-Thresholds:
-≥ 0.8 → HIGH RISK
-0.5–0.8 → MEDIUM RISK
-< 0.5 → LOW RISK
+## 🧠 Skills Demonstrated
+- Java 17+  
+- Multithreading & Concurrency  
+- JVM Memory Optimization  
+- Off-heap Memory (Direct ByteBuffer)  
+- Object Pooling  
+- Performance Engineering  
+- Fraud Detection  
+- Clean Code Architecture  
 
-🤝 Contributing
-PRs, issues and suggestions are welcome.
+---
 
-⭐ If you like this project, give it a star!
-It helps others find it and supports my work.
+## ⭐ Contribute & Support
+PRs, issues and improvements are welcome.
+
+If you like this project, **please give it a star** ⭐ — it helps others discover it!
+
+
