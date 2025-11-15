@@ -1,7 +1,19 @@
+<h1 align="center">🚀 FinTech Fraud Detection & High-Performance Memory Engine</h1>
+<p align="center"><strong>Java • Multithreading • Fraud Scoring • Memory Optimization • Object Pooling • GC Monitoring</strong></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-17+-red?logo=java" />
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen" />
+  <img src="https://img.shields.io/badge/Performance-700k%2B%20TPS-blue" />
+  <img src="https://img.shields.io/badge/Domain-FinTech-yellow" />
+  <img src="https://img.shields.io/badge/Memory%20Optimized-Yes-success" />
+  <img src="https://img.shields.io/badge/Fraud%20Model-Weighted%20Scoring-purple" />
+  <img src="https://img.shields.io/badge/Multithreading-Enabled-orange" />
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+</p>
+
 📌 Overview
-
 This project simulates a real-time FinTech transaction engine, optimized for high throughput, low latency, and intelligent fraud detection.
-
 It combines JVM memory management techniques, object pooling, off-heap memory, multithreading, and a weighted fraud scoring model to simulate how actual payment systems (UPI, Visa, Stripe, PayPal, Razorpay) process and screen transactions.
 
 ✨ Key Features
@@ -40,29 +52,18 @@ Get real-time:
 -Throughput metrics
 
 🧩 System Architecture
-┌────────────────────────┐
-│        Main.java        │
-│  - Coordinates engine   │
-│  - Starts worker pool   │
-└───────────┬────────────┘
-            │
-┌───────────▼───────────┐
-│ MultiThreadedExecutor │
-│  - 8 threads           │
-│  - Parallel processing │
-└───────────┬───────────┘
-            │
-┌───────────▼────────────┐
-│  TransactionProcessor   │
-│  - Fraud scoring        │
-│  - Memory writes        │
-└───────────┬────────────┘
-            │
-┌───────────▼─────────────┐
-│     MemoryManager        │
-│ - Off-heap buffer        │
-│ - Transaction pool       │
-└──────────────────────────┘
+Main.java
+└── starts → MultiThreadedExecutor
+├── runs parallel threads
+└── submits tasks → TransactionProcessor
+├── fraud scoring
+├── memory writes
+└── updates counters
+│
+▼
+MemoryManager
+├── TransactionPool (object pooling)
+└── DirectBuffer (off-heap memory)
 
 📂 Project Structure
 src/main/java/com/fintech/memory/
